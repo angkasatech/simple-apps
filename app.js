@@ -22,12 +22,20 @@ app.get('/app2', (req, res) => {
   res.send('Hello this App 2!')
 });
 
+// app.get('/users', (req, res, next) => {
+//   const sql = "SELECT * FROM tb_data ORDER BY id desc"
+//   connection.query(sql, (fields) => {
+//   res.send(fields)
+//   })
+// });
+
 app.get('/users', (req, res, next) => {
   const sql = "SELECT * FROM tb_data ORDER BY id desc"
-  connection.query(sql, (fields) => {
+  connection.query(sql,(fields) => {
   res.send(fields)
-  })
+  })
 });
+
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`Example app listening on port ${process.env.APP_PORT}`)
