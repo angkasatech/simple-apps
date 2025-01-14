@@ -23,7 +23,7 @@ app.get('/app2', (req, res) => {
 });
 
 app.get('/users', (req, res, next) => {
-  //const sql = "SELECT * FROM tb_data ORDER BY id desc"
+  const sql = "SELECT * FROM tb_data ORDER BY id desc"
   connection.query(sql,(error, fields) => {
       res.send(fields)
   })
@@ -31,6 +31,6 @@ app.get('/users', (req, res, next) => {
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`Example app listening on port ${process.env.APP_PORT}`)
-})
+});
 
 module.exports = app
