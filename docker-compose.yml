@@ -17,7 +17,7 @@ services:
             MYSQL_DATABASE: training
 
   db:
-    image: "mariadb:"
+    image: "mariadb"
     restart: always
     links:
       - phpmyadmin
