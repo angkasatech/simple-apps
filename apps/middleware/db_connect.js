@@ -1,8 +1,8 @@
-const mysql = require('mysql')
+const mariadb = require('mariadb')
 require('dotenv').config();
 
 // Connect database
-const connection = mysql.createConnection({
+const connection = mariadb.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
