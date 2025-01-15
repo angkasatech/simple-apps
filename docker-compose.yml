@@ -10,6 +10,11 @@ services:
       - "3000"
     volumes:
       - app-data:/app/public/images
+    environment: # Add database connection details here
+            MYSQL_HOST: db # Use the service name as hostname
+            MYSQL_USER: peserta
+            MYSQL_PASSWORD: password
+            MYSQL_DATABASE: training
 
   db:
     image: "mariadb"
@@ -33,7 +38,7 @@ services:
     ports:
       - "8009:80"
     environment:
-      - PMA_HOST=db
+      PMA_HOST: db
 
   web:
     build: ./nginx
