@@ -1,5 +1,7 @@
 pipeline {
-    agent { label 'devops1-amar' }
+    agent { label 'devops1-rmdhn'}
+    tools { nodejs 'NodeJs' }
+    
 
     stages {
         stage('Pull SCM') {
@@ -8,19 +10,10 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                sh'''
-                cd app
-                npm install
-                '''
-            }
-        }
-        
         stage('Testing') {
             steps {
                 sh'''
-                cd app
+                cd apps
                 npm test
                 npm run test:coverage
                 '''
@@ -35,12 +28,12 @@ pipeline {
                     -Dsonar.projectKey=Simple-Apps \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://172.23.10.14:9000 \
-                    -Dsonar.login=sqp_afd306fec629a29b3636919ec4f4aaeff8f70ac4
+                    -Dsonar.login=sqp_6162fa52b4e2f2082ac6c21a8106b0a0cf1ee3db
                 '''
             }
         }
         
-        stage('Deploy') {
+        stage('Deploy Compose') {
             steps {
                 sh'''
                 docker compose up --build -d
