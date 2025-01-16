@@ -9,6 +9,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/angkasatech/simple-apps.git'
             }
         }
+
+        stage('Build') {
+            steps {
+                sh'''
+                cd apps
+                npm install
+                '''
+            }
+        }
         
         stage('Testing') {
             steps {
